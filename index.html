@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GL Homes Community Guide | The Edmund Bogen Team</title>
+    <meta name="description" content="Comprehensive guide to GL Homes luxury communities in Boca Raton and Delray Beach. Current pricing, amenities, and market insights from The Edmund Bogen Team.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a3e5c;
+            --navy-dark: #0d1623;
+            --bright-blue: #00a8e1;
+            --white: #ffffff;
+            --light-gray: #f4f4f4;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 62, 92, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--bright-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 120px 40px 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--bright-blue);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 3px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1.3;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .hero-meta span {
+            color: var(--bright-blue);
+        }
+
+        /* Featured Image */
+        .featured-image {
+            max-width: 1000px;
+            margin: -30px auto 0;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .featured-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e0e0e0 100%);
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--navy);
+            padding: 30px 40px;
+            margin-top: 40px;
+        }
+
+        .stats-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            color: var(--bright-blue);
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content h2 {
+            color: var(--navy);
+            font-size: 28px;
+            font-weight: 500;
+            margin: 50px 0 25px;
+            padding-left: 20px;
+            border-left: 4px solid var(--bright-blue);
+        }
+
+        .content h3 {
+            color: var(--navy);
+            font-size: 22px;
+            font-weight: 500;
+            margin: 35px 0 15px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .intro-text {
+            font-size: 19px;
+            color: var(--text-light);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0 35px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .data-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: var(--light-gray);
+        }
+
+        .data-table .highlight {
+            color: var(--bright-blue);
+            font-weight: 600;
+        }
+
+        /* Community Cards */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .community-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+        }
+
+        .community-card h4 {
+            color: var(--navy);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .community-card .price-range {
+            color: var(--bright-blue);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .community-card p {
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            color: var(--white);
+            padding: 35px;
+            border-radius: 8px;
+            margin: 35px 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--bright-blue);
+            margin-top: 0;
+        }
+
+        .highlight-box p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-box ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .highlight-box li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+
+        /* Lists */
+        .content ul {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+        }
+
+        .content li strong {
+            color: var(--navy);
+        }
+
+        /* Advice Sections */
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .advice-card {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--bright-blue);
+        }
+
+        .advice-card h4 {
+            color: var(--navy);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .advice-card p {
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--bright-blue);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #0090c5;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 168, 225, 0.3);
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            color: var(--navy);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--bright-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .community-grid,
+            .advice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .featured-image {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 100px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .stat-value {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="https://bogen.ai" class="nav-logo">Edmund Bogen Team</a>
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#communities">Communities</a>
+            <a href="#buyers">For Buyers</a>
+            <a href="#sellers">For Sellers</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <span class="hero-badge">Market Intelligence</span>
+        <h1>Your Complete Guide to GL Homes Communities in Boca Raton & Delray Beach</h1>
+        <p class="hero-subtitle">Current pricing, amenities, and insider insights across 14 luxury communities—from the contemporary Lotus series to the established elegance of the Bridges collection.</p>
+        <p class="hero-meta">By <span>Dina Ulrich</span> | The Edmund Bogen Team at Douglas Elliman | January 2026</p>
+    </section>
+
+    <!-- Featured Image Placeholder -->
+    <div class="featured-image">
+        <div class="image-placeholder">Featured Image Coming Soon</div>
+    </div>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-value">50</div>
+                <div class="stat-label">Years Building in Florida</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">14</div>
+                <div class="stat-label">Communities in Boca/Delray</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4,200+</div>
+                <div class="stat-label">Homes in Our Market</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$415K–$8M+</div>
+                <div class="stat-label">Price Range</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <article class="content" id="overview">
+        <p class="intro-text">If you've been exploring luxury real estate in West Boca Raton or Delray Beach, you've almost certainly come across GL Homes communities. From the contemporary lines of Lotus Edge to the established elegance of Seven Bridges, GL Homes has fundamentally shaped what luxury living looks like in our area. As part of The Edmund Bogen Team, I work with buyers and sellers in these communities every week—and the differences between them matter enormously.</p>
+
+        <h2>The GL Homes Story: Nearly 50 Years Building Florida's Finest</h2>
+
+        <p>GL Homes isn't just another national builder with a Florida office. Founded in 1976 by Itzhak Ezratti and his father-in-law Joseph Hanin, the company started with a single duplex in Hollywood, Florida. Today, they're the largest private homebuilder in Palm Beach County and the 9th largest private homebuilder in the United States.</p>
+
+        <p>What sets GL Homes apart is their <strong>Florida-exclusive focus</strong>. Every home is engineered specifically for our climate—concrete block construction, hurricane-impact windows and doors, and advanced drainage systems. When the Chinese drywall crisis hit years ago, GL Homes replaced all affected materials at their own expense while other builders walked away.</p>
+
+        <p>The company remains family-owned, with Misha Ezratti (honored as South Florida Business Journal's "Ultimate CEO" in November 2024) now leading operations. Over 100,000 residents currently live in GL Homes communities statewide.</p>
+
+        <h2 id="communities">Boca Bridges: The Pinnacle of West Boca Luxury</h2>
+
+        <p>If there's a flagship GL Homes community, it's Boca Bridges. Located on Lyons Road between Clint Moore and Atlantic Avenue, this 504-home enclave represents the builder's most ambitious achievement in our market.</p>
+
+        <h3>Current Market Snapshot</h3>
+
+        <table class="data-table">
+            <tr>
+                <th>Metric</th>
+                <th>Current Data</th>
+            </tr>
+            <tr>
+                <td>Price Range</td>
+                <td class="highlight">$2,450,000 – $6,495,000</td>
+            </tr>
+            <tr>
+                <td>Average Sale Price (12 months)</td>
+                <td class="highlight">$3,234,778</td>
+            </tr>
+            <tr>
+                <td>Price Per Square Foot</td>
+                <td>$473–$800+ (premium lakefront)</td>
+            </tr>
+            <tr>
+                <td>Average Days on Market</td>
+                <td>128–133 days</td>
+            </tr>
+            <tr>
+                <td>Home Sizes</td>
+                <td>2,561 – 8,100+ sq ft</td>
+            </tr>
+            <tr>
+                <td>HOA Fees</td>
+                <td>$1,120–$1,173/month</td>
+            </tr>
+        </table>
+
+        <div class="highlight-box">
+            <h3>The Amenity Package</h3>
+            <p>Boca Bridges delivers country club amenities without the $150,000+ initiation fee:</p>
+            <ul>
+                <li>27,000 sq ft clubhouse with CUT 5 gourmet restaurant</li>
+                <li>6 lighted clay tennis courts + 4 pickleball courts</li>
+                <li>Resort-style pools with beach entry</li>
+                <li>Full fitness center with spa services</li>
+                <li>24/7 manned security with individual home alarm monitoring</li>
+            </ul>
+        </div>
+
+        <h2>Seven Bridges: Established Luxury with Proven Appreciation</h2>
+
+        <p>Seven Bridges in Delray Beach predates Boca Bridges as GL Homes' first "mega-community" in our area. Spanning 412 acres with 701 single-family homes built from 2015-2019, this community offers the advantage of maturity—established landscaping, a proven track record, and a well-developed social scene.</p>
+
+        <table class="data-table">
+            <tr>
+                <th>Metric</th>
+                <th>Current Data</th>
+            </tr>
+            <tr>
+                <td>Price Range</td>
+                <td class="highlight">$1,449,000 – $4,795,000</td>
+            </tr>
+            <tr>
+                <td>Average Sale Price</td>
+                <td class="highlight">$2,170,458</td>
+            </tr>
+            <tr>
+                <td>Price Per Square Foot</td>
+                <td>$367–$580 (renovated premium)</td>
+            </tr>
+            <tr>
+                <td>Average Days on Market</td>
+                <td>75–86 days</td>
+            </tr>
+            <tr>
+                <td>Clubhouse</td>
+                <td>30,000 sq ft with Prime Seven restaurant</td>
+            </tr>
+            <tr>
+                <td>HOA Fees</td>
+                <td>$1,100–$1,180/month</td>
+            </tr>
+        </table>
+
+        <p>Nine distinct neighborhoods—Chelsea, Greenwich, Kensington, Madison, Newbury, Oxford, Parkside, Preston, and Woodlands—offer varied lot configurations. The 30,000-square-foot clubhouse features 12 Har-Tru tennis courts, 4 pickleball courts, an indoor sports court, and even an on-site Starbucks.</p>
+
+        <h2>The Lotus Communities: Contemporary Design Takes Center Stage</h2>
+
+        <p>GL Homes' Lotus brand represents a strategic pivot to 100% contemporary architecture. If you prefer clean lines, open floor plans, and modern aesthetics over Mediterranean or transitional styles, Lotus is your answer.</p>
+
+        <div class="community-grid">
+            <div class="community-card">
+                <h4>Lotus (Original)</h4>
+                <div class="price-range">$1,300,000 – $3,300,000</div>
+                <p>805 homes built 2019-2020. Average $2,015,070. 94% list-to-sale ratio. The trendsetter that established the brand.</p>
+            </div>
+            <div class="community-card">
+                <h4>Lotus Palm</h4>
+                <div class="price-range">$1,645,000 – $3,295,000</div>
+                <p>525 homes with enhanced finishes. 65-day average market time—fastest of any GL community. $679/month HOA.</p>
+            </div>
+            <div class="community-card">
+                <h4>Lotus Edge (NEW)</h4>
+                <div class="price-range">$1,600,000 – $3,000,000</div>
+                <p>655-665 planned homes on 330 acres. 39,000 sq ft clubhouse—largest ever. Exclusive padel courts & cold plunge pool.</p>
+            </div>
+            <div class="community-card">
+                <h4>The Bridges</h4>
+                <div class="price-range">$1,550,000 – $2,995,000</div>
+                <p>591 homes built 2012. The predecessor that started it all. 17,000 sq ft clubhouse with "The Grille" restaurant.</p>
+            </div>
+        </div>
+
+        <h2>Value Opportunities: More GL Homes Communities</h2>
+
+        <h3>Mid-Market Options</h3>
+        <ul>
+            <li><strong>Dakota (Delray Beach):</strong> $800,000–$1,325,000, averaging $451/sq ft with HOA fees of just $460/month</li>
+            <li><strong>Saturnia Isles (Delray Beach):</strong> $765,000–$1,490,000, exceptional value at ~$410/month HOA on 400+ acres</li>
+            <li><strong>Tuscany (Delray Beach):</strong> $649,800–$950,000, fastest-selling GL community at just 37 days average market time</li>
+        </ul>
+
+        <h3>Active Adult 55+ Communities</h3>
+        <ul>
+            <li><strong>Valencia Palms (Delray Beach):</strong> $499,000–$1,295,000, 31,000 sq ft clubhouse with 100+ social clubs</li>
+            <li><strong>Valencia Falls (Delray Beach):</strong> $415,000–$899,000, most affordable GL Homes entry point with a 700-seat performance hall</li>
+        </ul>
+
+        <h2 id="buyers">What This Means for Buyers</h2>
+
+        <div class="advice-grid">
+            <div class="advice-card">
+                <h4>Best Value Per Square Foot</h4>
+                <p>Symphony Bay ($214–343/sq ft), Saturnia Isles ($241–353/sq ft), and Valencia Falls ($220–279/sq ft) offer GL Homes quality at accessible price points.</p>
+            </div>
+            <div class="advice-card">
+                <h4>Strongest Appreciation</h4>
+                <p>Saturnia Boca (+6% year-over-year) and Tuscany (97% list-to-sale ratio) show continued strong demand.</p>
+            </div>
+            <div class="advice-card">
+                <h4>Newest Amenities</h4>
+                <p>Lotus Edge delivers the largest clubhouse (39,000 sq ft) and exclusive padel courts if cutting-edge matters to you.</p>
+            </div>
+            <div class="advice-card">
+                <h4>Fastest Absorption</h4>
+                <p>If you find something you like in Lotus Palm (65 days) or Tuscany (37 days), move quickly—homes don't last long.</p>
+            </div>
+        </div>
+
+        <h2 id="sellers">What This Means for Sellers</h2>
+
+        <p><strong>Boca Bridges sellers</strong> should emphasize premium estate positioning. Your baseline is $473–480/sq ft, with potential to reach $700+ for upgraded lakefront properties.</p>
+
+        <p><strong>Seven Bridges sellers</strong> benefit from the community's 10-year appreciation track record and 75–86 day sales velocity—faster than comparable non-GL luxury homes.</p>
+
+        <p><strong>Lotus community sellers</strong> should highlight contemporary design differentiation. The 94–96% list-to-sale ratios demonstrate that buyers pay near asking price for the right property.</p>
+
+        <p><strong>All GL Homes sellers</strong> can leverage the "no equity membership" value proposition—buyers get country club amenities without $150,000+ initiation fees.</p>
+
+        <!-- Author Box -->
+        <div class="author-box">
+            <div class="author-avatar">DU</div>
+            <div class="author-info">
+                <h4>Dina Ulrich</h4>
+                <p>The Edmund Bogen Team at Douglas Elliman Real Estate<br>Specializing in GL Homes communities throughout Boca Raton and Delray Beach</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Let's Discuss Your Goals</h2>
+        <p>Whether you're buying into a GL Homes community or selling your current home, the details matter. Each community has distinct characteristics, pricing dynamics, and buyer profiles.</p>
+        <a href="mailto:edmund@bogenhomes.com" class="cta-button">Contact The Edmund Bogen Team</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 The Edmund Bogen Team at Douglas Elliman Real Estate | <a href="https://bogen.ai">bogen.ai</a></p>
+        <p style="margin-top: 10px; font-size: 11px;">Data compiled from MLS, Pearl Antonacci, Neighborhoods.com, and GL Homes sources. Market data current as of January 2026.</p>
+    </footer>
+</body>
+</html>
